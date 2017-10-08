@@ -56,30 +56,30 @@ enum LabelType {
 
 protocol LabelStylable {
     
-    var headerLabel: LabelStyle { get }
-    var regularLabel: LabelStyle { get }
+    var headerStyle: LabelStyle { get }
+    var regularStyle: LabelStyle { get }
 }
 
 extension LabelStylable where Self: UILabel {
     
-    var headerLabel: LabelStyle {
+    var headerStyle: LabelStyle {
         return LabelStyle(fontSize: 20.0)
     }
     
-    var regularLabel: LabelStyle {
+    var regularStyle: LabelStyle {
         return LabelStyle(fontSize: 14.0, color: .darkGray)
     }
     
     mutating func style(_ type: LabelType) {
         
         switch type {
-        case .header: apply(headerLabel)
-        case .regular: apply(regularLabel)
+        case .header: applyStyle(headerStyle)
+        case .regular: applyStyle(regularStyle)
         case .none: print("no styling applied")
         }
     }
     
-    private func apply(_ style: UIStyle) {
+    private func applyStyle(_ style: UIStyle) {
         
         self.font = UIFont(name: style.fontName, size: style.fontSize)
         self.textColor = style.color
@@ -87,8 +87,12 @@ extension LabelStylable where Self: UILabel {
 }
 
 extension UILabel: LabelStylable {
-    var headerLabel: LabelStyle {
+    var headerStyle: LabelStyle {
         return LabelStyle(color: .brown)
+    }
+    
+    var regularStyle: LabelStyle {
+        return LabelStyle(fontSize: 12.0, color: .darkGray)
     }
 }
 
