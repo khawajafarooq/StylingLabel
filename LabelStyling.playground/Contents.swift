@@ -39,6 +39,12 @@ struct LabelStyle: UIStyle {
     var fontName: String
     var fontSize: CGFloat
     var color: UIColor
+    
+    init(fontName: String = ".SFUIText", fontSize: CGFloat = 17, color: UIColor = .black) {
+        self.fontName = fontName
+        self.fontSize = fontSize
+        self.color = color
+    }
 }
 
 enum LabelType {
@@ -57,11 +63,11 @@ protocol LabelStylable {
 extension LabelStylable where Self: UILabel {
     
     var headerLabel: LabelStyle {
-        return LabelStyle(fontName: ".SFUIText", fontSize: 20.0, color: .darkGray)
+        return LabelStyle(fontSize: 20.0)
     }
     
     var regularLabel: LabelStyle {
-        return LabelStyle(fontName: ".SFUIText", fontSize: 14.0, color: .darkGray)
+        return LabelStyle(fontSize: 14.0, color: .darkGray)
     }
     
     mutating func style(_ type: LabelType) {
@@ -82,7 +88,7 @@ extension LabelStylable where Self: UILabel {
 
 extension UILabel: LabelStylable {
     var headerLabel: LabelStyle {
-        return LabelStyle(fontName: ".SFUIText", fontSize: 20.0, color: .brown)
+        return LabelStyle(color: .brown)
     }
 }
 
