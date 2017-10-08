@@ -1,5 +1,5 @@
-## StylingAPI
-Styling API for UILabel in swift
+## Styling Label
+A protocol oriented API written in swift for styling UILabel.
 
 ### Compatibility
 Verified that this repository's code works in XCode 9 with Swift 4
