@@ -7,19 +7,41 @@ class LabelViewController : UIViewController {
         let view = UIView()
         view.backgroundColor = .white
         
-        var titleLabel = UILabel()
-        titleLabel.frame = CGRect(x: 20, y: 20, width: 300, height: 35)
-        titleLabel.text = "Swift API Design"
-        titleLabel.style(.title)
+        var label1 = UILabel()
+        label1.frame = CGRect(x: 20, y: 20, width: 350, height: 20)
+        label1.text = "Swift API Design"
+        label1.style(.headline)
         
-        let yOffset = titleLabel.frame.origin.y + titleLabel.frame.size.height
-        var subTitleLabel = UILabel()
-        subTitleLabel.frame = CGRect(x: 20, y: yOffset, width: 300, height: 20)
-        subTitleLabel.text = "Simple swift API for styling labels."
-        subTitleLabel.style(.body)
+        var yOffset = label1.frame.origin.y + label1.frame.size.height
+        var label2 = UILabel()
+        label2.frame = CGRect(x: 20, y: yOffset, width: 350, height: 20)
+        label2.text = "This API is designed using apple guidelines"
+        label2.style(.subhead)
         
-        view.addSubview(titleLabel)
-        view.addSubview(subTitleLabel)
+        yOffset = label2.frame.origin.y + label2.frame.size.height
+        var label3 = UILabel()
+        label3.frame = CGRect(x: 20, y: yOffset, width: 350, height: 20)
+        label3.text = "Explanation"
+        label3.style(.title)
+        
+        yOffset = label3.frame.origin.y + label2.frame.size.height
+        var label4 = UILabel()
+        label4.frame = CGRect(x: 20, y: yOffset, width: 350, height: 20)
+        label4.text = "Simple swift API for styling labels."
+        label4.style(.body)
+        
+        yOffset = label4.frame.origin.y + label4.frame.size.height
+        var label5 = UILabel()
+        label5.frame = CGRect(x: 20, y: yOffset, width: 350, height: 20)
+        label5.text = "© All rights reserved"
+        label5.style(.footnote)
+        
+        view.addSubview(label1)
+        view.addSubview(label2)
+        view.addSubview(label3)
+        view.addSubview(label4)
+        view.addSubview(label5)
+        
         self.view = view
     }
 }
@@ -113,12 +135,25 @@ extension LabelStylable where Self: UILabel {
 }
 
 extension UILabel: LabelStylable {
+    
     var titleStyle: LabelStyle {
-        return LabelStyle(color: .brown)
+        return LabelStyle(fontSize: 12.0, color: .brown)
+    }
+    
+    var headlineStyle: LabelStyle {
+        return LabelStyle(color: .darkGray)
     }
     
     var bodyStyle: LabelStyle {
+        return LabelStyle(color: .orange)
+    }
+    
+    var subheadStyle: LabelStyle {
         return LabelStyle(color: .gray)
+    }
+    
+    var footnoteStyle: LabelStyle {
+        return LabelStyle(fontSize: 12.0, color: .purple)
     }
 }
 
