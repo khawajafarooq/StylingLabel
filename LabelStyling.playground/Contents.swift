@@ -45,6 +45,11 @@ struct LabelStyle: UIStyle {
         self.fontSize = fontSize
         self.color = color
     }
+    
+    init(fontStyle: UIFontTextStyle = .body, color: UIColor = .black) {
+        let font = UIFont.preferredFont(forTextStyle: fontStyle)
+        self.init(fontName: font.fontName, fontSize: font.pointSize, color: color)
+    }
 }
 
 enum LabelType {
@@ -69,33 +74,33 @@ protocol LabelStylable {
 extension LabelStylable where Self: UILabel {
     
     var titleStyle: LabelStyle {
-        return LabelStyle(fontSize: 28.0)
+        return LabelStyle(fontStyle: .title1)
     }
     
     var headlineStyle: LabelStyle {
-        return LabelStyle(fontSize: 17.0, color: .darkGray)
+        return LabelStyle(fontStyle: .headline)
     }
     
     var bodyStyle: LabelStyle {
-        return LabelStyle(fontSize: 17.0, color: .darkGray)
+        return LabelStyle(fontStyle: .body)
     }
     
     var subheadStyle: LabelStyle {
-        return LabelStyle(fontSize: 17.0, color: .darkGray)
+        return LabelStyle(fontStyle: .subheadline)
     }
     
     var footnoteStyle: LabelStyle {
-        return LabelStyle(fontSize: 17.0, color: .darkGray)
+        return LabelStyle(fontStyle: .footnote)
     }
     
     mutating func style(_ type: LabelType) {
         
         switch type {
         case .title: apply(style: titleStyle)
-        case .headline: print("Need to implement")
+        case .headline: apply(style: headlineStyle)
         case .body: apply(style: bodyStyle)
-        case .subhead: print("Need to implement")
-        case .footnote: print("Need to implement")
+        case .subhead: apply(style: subheadStyle)
+        case .footnote: apply(style: footnoteStyle)
         case .none: print("no styling applied")
         }
     }
@@ -107,5 +112,13 @@ extension LabelStylable where Self: UILabel {
     }
 }
 
-extension UILabel: LabelStylable {}
+extension UILabel: LabelStylable {
+    var titleStyle: LabelStyle {
+        return LabelStyle(color: .brown)
+    }
+    
+    var bodyStyle: LabelStyle {
+        return LabelStyle(color: .gray)
+    }
+}
 
