@@ -15,7 +15,7 @@ class LabelViewController : UIViewController {
         var yOffset = label1.frame.origin.y + label1.frame.size.height
         var label2 = UILabel()
         label2.frame = CGRect(x: 20, y: yOffset, width: 350, height: 30)
-        label2.text = "🍎 API is design guidelines"
+        label2.text = "🍎 API design guidelines"
         label2.style(.headline)
         
         yOffset = label2.frame.origin.y + label2.frame.size.height + 5
