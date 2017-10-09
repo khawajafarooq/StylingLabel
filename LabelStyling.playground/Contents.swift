@@ -8,15 +8,15 @@ class LabelViewController : UIViewController {
         view.backgroundColor = .white
         
         var titleLabel = UILabel()
-        titleLabel.frame = CGRect(x: 20, y: 20, width: 300, height: 24)
+        titleLabel.frame = CGRect(x: 20, y: 20, width: 300, height: 35)
         titleLabel.text = "Swift API Design"
-        titleLabel.style(.header)
+        titleLabel.style(.title)
         
         let yOffset = titleLabel.frame.origin.y + titleLabel.frame.size.height
         var subTitleLabel = UILabel()
         subTitleLabel.frame = CGRect(x: 20, y: yOffset, width: 300, height: 20)
         subTitleLabel.text = "Simple swift API for styling labels."
-        subTitleLabel.style(.regular)
+        subTitleLabel.style(.body)
         
         view.addSubview(titleLabel)
         view.addSubview(subTitleLabel)
@@ -49,32 +49,53 @@ struct LabelStyle: UIStyle {
 
 enum LabelType {
     
-    case header
-    case regular
+    case title
+    case headline
+    case body
+    case subhead
+    case footnote
     case none
 }
 
 protocol LabelStylable {
     
-    var headerStyle: LabelStyle { get }
-    var regularStyle: LabelStyle { get }
+    var titleStyle: LabelStyle { get }
+    var headlineStyle: LabelStyle { get }
+    var bodyStyle: LabelStyle { get }
+    var subheadStyle: LabelStyle { get }
+    var footnoteStyle: LabelStyle { get }
 }
 
 extension LabelStylable where Self: UILabel {
     
-    var headerStyle: LabelStyle {
-        return LabelStyle(fontSize: 20.0)
+    var titleStyle: LabelStyle {
+        return LabelStyle(fontSize: 28.0)
     }
     
-    var regularStyle: LabelStyle {
-        return LabelStyle(fontSize: 14.0, color: .darkGray)
+    var headlineStyle: LabelStyle {
+        return LabelStyle(fontSize: 17.0, color: .darkGray)
+    }
+    
+    var bodyStyle: LabelStyle {
+        return LabelStyle(fontSize: 17.0, color: .darkGray)
+    }
+    
+    var subheadStyle: LabelStyle {
+        return LabelStyle(fontSize: 17.0, color: .darkGray)
+    }
+    
+    var footnoteStyle: LabelStyle {
+        return LabelStyle(fontSize: 17.0, color: .darkGray)
     }
     
     mutating func style(_ type: LabelType) {
         
         switch type {
-        case .header: apply(style: headerStyle)
-        case .regular: apply(style: regularStyle)
+        case .title: apply(style: titleStyle)
+        case .headline: print("Need to implement")
+        case .body: apply(style: bodyStyle)
+        case .subhead: print("Need to implement")
+        case .footnote: print("Need to implement")
         case .none: print("no styling applied")
         }
     }
@@ -86,13 +107,5 @@ extension LabelStylable where Self: UILabel {
     }
 }
 
-extension UILabel: LabelStylable {
-    var headerStyle: LabelStyle {
-        return LabelStyle(color: .brown)
-    }
-    
-    var regularStyle: LabelStyle {
-        return LabelStyle(fontSize: 12.0, color: .darkGray)
-    }
-}
+extension UILabel: LabelStylable {}
 
