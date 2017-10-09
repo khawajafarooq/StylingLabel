@@ -8,29 +8,30 @@ class LabelViewController : UIViewController {
         view.backgroundColor = .white
         
         var label1 = UILabel()
-        label1.frame = CGRect(x: 20, y: 20, width: 350, height: 20)
+        label1.frame = CGRect(x: 20, y: 20, width: 350, height: 35)
         label1.text = "Swift API Design"
-        label1.style(.headline)
+        label1.style(.title)
         
         var yOffset = label1.frame.origin.y + label1.frame.size.height
         var label2 = UILabel()
-        label2.frame = CGRect(x: 20, y: yOffset, width: 350, height: 20)
-        label2.text = "This API is designed using apple guidelines"
-        label2.style(.subhead)
+        label2.frame = CGRect(x: 20, y: yOffset, width: 350, height: 30)
+        label2.text = "🍎 API is design guidelines"
+        label2.style(.headline)
         
-        yOffset = label2.frame.origin.y + label2.frame.size.height
+        yOffset = label2.frame.origin.y + label2.frame.size.height + 5
         var label3 = UILabel()
         label3.frame = CGRect(x: 20, y: yOffset, width: 350, height: 20)
-        label3.text = "Explanation"
-        label3.style(.title)
+        label3.text = "Need Explanation? 🤔"
+        label3.style(.subhead)
         
-        yOffset = label3.frame.origin.y + label2.frame.size.height
+        yOffset = label3.frame.origin.y + label3.frame.size.height
         var label4 = UILabel()
-        label4.frame = CGRect(x: 20, y: yOffset, width: 350, height: 20)
-        label4.text = "Simple swift API for styling labels."
+        label4.frame = CGRect(x: 20, y: yOffset, width: 350, height: 50)
+        label4.numberOfLines = 0
+        label4.text = "This is easy API for styling UILabels in swift. "
         label4.style(.body)
         
-        yOffset = label4.frame.origin.y + label4.frame.size.height
+        yOffset = label4.frame.origin.y + label4.frame.size.height + 5
         var label5 = UILabel()
         label5.frame = CGRect(x: 20, y: yOffset, width: 350, height: 20)
         label5.text = "© All rights reserved"
@@ -134,26 +135,5 @@ extension LabelStylable where Self: UILabel {
     }
 }
 
-extension UILabel: LabelStylable {
-    
-    var titleStyle: LabelStyle {
-        return LabelStyle(fontSize: 12.0, color: .brown)
-    }
-    
-    var headlineStyle: LabelStyle {
-        return LabelStyle(color: .darkGray)
-    }
-    
-    var bodyStyle: LabelStyle {
-        return LabelStyle(color: .orange)
-    }
-    
-    var subheadStyle: LabelStyle {
-        return LabelStyle(color: .gray)
-    }
-    
-    var footnoteStyle: LabelStyle {
-        return LabelStyle(fontSize: 12.0, color: .purple)
-    }
-}
+extension UILabel: LabelStylable {}
 
