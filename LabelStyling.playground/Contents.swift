@@ -73,13 +73,13 @@ extension LabelStylable where Self: UILabel {
     mutating func style(_ type: LabelType) {
         
         switch type {
-        case .header: applyStyle(headerStyle)
-        case .regular: applyStyle(regularStyle)
+        case .header: apply(style: headerStyle)
+        case .regular: apply(style: regularStyle)
         case .none: print("no styling applied")
         }
     }
     
-    private func applyStyle(_ style: UIStyle) {
+    private func apply(style: UIStyle) {
         
         self.font = UIFont(name: style.fontName, size: style.fontSize)
         self.textColor = style.color
